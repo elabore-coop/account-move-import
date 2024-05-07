@@ -275,7 +275,7 @@ class AccountMoveImport(models.TransientModel):
         fieldnames = [
             'journal',        # JournalCode
             False,            # JournalLib
-            False,            # EcritureNum
+            'move_name',      # EcritureNum
             'date',           # EcritureDate
             'account',        # CompteNum
             False,            # CompteLib
@@ -329,7 +329,7 @@ class AccountMoveImport(models.TransientModel):
         fieldnames = [
             'date', 'journal', 'account', 'partner',
             'analytic', 'name', 'debit', 'credit',
-            'ref', 'reconcile_ref'
+            'ref', 'reconcile_ref', 'move_name',
             ]
         first_line = fileobj.readline().decode()
         dialect = unicodecsv.Sniffer().sniff(first_line)
@@ -366,6 +366,7 @@ class AccountMoveImport(models.TransientModel):
                 'name': l['name'],
                 'ref': l.get('ref', ''),
                 'reconcile_ref': l.get('reconcile_ref', ''),
+                'move_name': l.get('move_name', ''),
                 'line': i,
                 }
             if l['analytic']:
@@ -401,6 +402,7 @@ class AccountMoveImport(models.TransientModel):
                 'ref': len(row) > 8 and row[8].value or '',
                 'reconcile_ref': len(row) > 9 and row[9].value or '',
                 'analytic_tags': len(row) > 10 and row[10].value or '',
+                'move_name': len(row) > 11 and row[11].value or '',
                 'line': i,
                 }
             res.append(vals)

@@ -55,6 +55,7 @@
                         <li>Credit</li>
                         <li>Ref (used as Journal Entry Ref)</li>
                         <li>Reconcile ref (used for reconciliation after import)</li>
+                        <li>Journal entry number</li>
                         </ol></li>
                     <li><em>Encoding</em>: UTF-8</li>
                     <li><em>Field separator</em>: auto-detected</li>
@@ -76,6 +77,7 @@
                     I. Ref (used as Journal Entry Ref)<br/>
                     J. Reconcile Ref (used for reconciliation after import)<br/>
                     K. Analytic Tags (separated by coma)<br/>
+                    L. Journal Entry Number<br/>
                 </p>
             </div>
 
