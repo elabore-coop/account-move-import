@@ -670,8 +670,8 @@ class AccountMoveImport(models.TransientModel):
         for l in pivot:
             assert l.get('line') and isinstance(l.get('line'), int), \
                 'missing line number'
-            if l['account'] in speeddict['account']:
-                l['account_id'] = speeddict['account'][l['account']]
+            if str(l['account']) in speeddict['account']:
+                l['account_id'] = speeddict['account'][str(l['account'])]
             if not l.get('account_id'):
                 # Match when import = 61100000 and Odoo has 611000
                 acc_code_tmp = l['account']
@@ -692,8 +692,8 @@ class AccountMoveImport(models.TransientModel):
             if not l.get('account_id'):
                 errors['account'].setdefault(l['account'], []).append(l['line'])
             if l.get('partner'):
-                if l['partner'] in speeddict['partner']:
-                    l['partner_id'] = speeddict['partner'][l['partner']]
+                if str(l['partner']) in speeddict['partner']:
+                    l['partner_id'] = speeddict['partner'][str(l['partner'])]
                 else:
                     errors['partner'].setdefault(l['partner'], []).append(l['line'])
             if l.get('analytic'):
