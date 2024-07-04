@@ -357,7 +357,7 @@ class AccountMoveImport(models.TransientModel):
         fieldnames = [
             'date', 'journal', 'account', 'partner',
             'analytic', 'name', 'debit', 'credit',
-            'ref', 'reconcile_ref'
+            'ref', 'reconcile_ref', 'move_name',
             ]
         # I use utf-8-sig instead of utf-8 to transparently handle BOM
         # https://en.wikipedia.org/wiki/Byte_order_mark
@@ -392,6 +392,7 @@ class AccountMoveImport(models.TransientModel):
                     'name': l['name'],
                     'ref': l.get('ref', ''),
                     'reconcile_ref': l.get('reconcile_ref', ''),
+                    'move_name': l.get('move_name', ''),
                     'line': i,
                     }
                 if l['analytic']:
@@ -437,6 +438,7 @@ class AccountMoveImport(models.TransientModel):
                 'credit': row[7].value,
                 'ref': len(row) > 8 and row[8].value or '',
                 'reconcile_ref': len(row) > 9 and row[9].value or '',
+                'move_name': len(row) > 10 and row[10].value or '',
                 'line': i,
                 }
             res.append(vals)
