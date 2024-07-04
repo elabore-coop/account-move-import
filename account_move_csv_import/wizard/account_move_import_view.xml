@@ -61,6 +61,7 @@
                         <li>Credit</li>
                         <li>Ref (used as Journal Entry Ref)</li>
                         <li>Reconcile ref (used for reconciliation after import)</li>
+                        <li>Journal entry number</li>
                         </ol></li>
                   </ul>
               </div>
@@ -77,6 +78,7 @@
                     H. Credit<br/>
                     I. Ref (used as Journal Entry Ref)<br/>
                     J. Reconcile Ref (used for reconciliation after import)<br/>
+                    K. Journal Entry Number<br/>
                 </p>
             </div>
 
